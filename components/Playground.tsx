@@ -1,42 +1,58 @@
-import React, { useCallback, ReactNode } from 'react';
+import React, { useCallback, ReactNode } from 'react'
 import ReactFlow, {
   useNodesState,
   useEdgesState,
   addEdge,
-  Node, 
+  Node,
   Edge,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from 'reactflow'
+import MessageNode from './MessageNode/MessageNode'
+import 'reactflow/dist/style.css'
+import './MessageNode/message-updater-node.css'
 
 interface NodeData {
-  label: string;
+  label: string
 }
 
 interface PlaygroundAreaProps {
-  children: ReactNode; // Type 'children' as ReactNode
+  children: ReactNode
 }
 
 const initialNodes: Node<NodeData>[] = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' }];
+  {
+    id: '1',
+    type: 'textUpdater',
+    position: { x: 0, y: 0 },
+    data: { label: '1' },
+  },
+  {
+    id: '2',
+    type: 'textUpdater',
+    position: { x: 0, y: 100 },
+    data: { label: '2' },
+  },
+]
+
+const nodeTypes = { textUpdater: MessageNode }
+
+const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' }]
 
 const PlaygroundArea: React.FC<PlaygroundAreaProps> = ({ children }) => {
-  const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>(initialNodes)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
 
   const onConnect = useCallback(
-    (params: Parameters<typeof addEdge>[0]) => setEdges((eds) => addEdge(params, eds)),
+    (params: Parameters<typeof addEdge>[0]) =>
+      setEdges((eds) => addEdge(params, eds)),
     [setEdges]
-  );
+  )
 
   return (
-    <main className="container bg-white h-screen mx-auto px-4 pt-16">
       <div style={{ width: '100vw', height: '100vh' }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
+          nodeTypes={nodeTypes}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
@@ -44,8 +60,7 @@ const PlaygroundArea: React.FC<PlaygroundAreaProps> = ({ children }) => {
           {children}
         </ReactFlow>
       </div>
-    </main>
-  );
-};
+  )
+}
 
-export default PlaygroundArea;
+export default PlaygroundArea

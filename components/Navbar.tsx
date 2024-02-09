@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import { Button } from "@/components/ui/button"
 interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
@@ -12,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         {/* Navigation Links (adjust as needed) */}
         <ul className="flex space-x-6">
           <li>
-            <button className='bg-gray-200 p-2'>Save Changes</button>
+            <Button className='p-2' variant="outline">Save Changes</Button>
           </li>
         </ul>
       </div>
