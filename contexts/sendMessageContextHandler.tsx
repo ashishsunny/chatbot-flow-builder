@@ -20,7 +20,7 @@ interface PlaygroundContextType {
     edges: Edge[];
     onNodesChange: any;
     onEdgesChange: any;
-    handleClick: () => void;
+    handleClick: any;
     onConnect: (params: Parameters<typeof addEdge>[0]) => void;
     nodeTypes: any;
 }
