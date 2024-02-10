@@ -9,12 +9,11 @@ import ReactFlow, {
 import MessageNode from './MessageNode/MessageNode'
 import 'reactflow/dist/style.css'
 import './MessageNode/message-updater-node.css'
-
 interface NodeData {
   label: string
 }
 
-interface PlaygroundAreaProps {
+interface PlaygroundProps {
   children: ReactNode
 }
 
@@ -22,22 +21,30 @@ const initialNodes: Node<NodeData>[] = [
   {
     id: '1',
     type: 'textUpdater',
-    position: { x: 0, y: 0 },
+    position: { x: 200, y: 200 },
     data: { label: '1' },
   },
   {
     id: '2',
     type: 'textUpdater',
-    position: { x: 0, y: 100 },
+    position: { x: 200, y: 250 },
     data: { label: '2' },
+  },
+  {
+    id: '3',
+    type: 'textUpdater',
+    position: { x: 200, y: 300 },
+    data: { label: '3' },
   },
 ]
 
 const nodeTypes = { textUpdater: MessageNode }
 
-const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' }]
+const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' },
+{ id: 'e2-3', source: '2', target: '3' },
+]
 
-const PlaygroundArea: React.FC<PlaygroundAreaProps> = ({ children }) => {
+const Playground: React.FC<PlaygroundProps> = ({ children }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
 
@@ -45,9 +52,9 @@ const PlaygroundArea: React.FC<PlaygroundAreaProps> = ({ children }) => {
     setNodes((prevNodes) => [
       ...prevNodes, 
       {
-        id: `${prevNodes.length + 1}`, // Access length property directly
+        id: `${prevNodes.length + 1}`,
         type: 'textUpdater',
-        position: { x: 0, y: (prevNodes[prevNodes.length-1]).position.y + 100},
+        position: { x: (prevNodes[prevNodes.length-1]).position.x + 300 , y: (prevNodes[prevNodes.length-1]).position.y},
         data: { label: `${prevNodes.length + 1}` }, 
       },
     ]);
@@ -77,4 +84,4 @@ const PlaygroundArea: React.FC<PlaygroundAreaProps> = ({ children }) => {
   )
 }
 
-export default PlaygroundArea
+export default Playground

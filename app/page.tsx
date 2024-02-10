@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react"
 import SettingsPanel from "@/components/Settings"
-import PlaygroundArea from "@/components/Playground"
+import Playground from "@/components/Playground"
 import ReactFlow, {
   MiniMap,
   Controls,
@@ -10,12 +10,12 @@ import ReactFlow, {
 const App = () => {
   return (
     <div className="w-screen h-screen">
-      <PlaygroundArea>
+      <Playground>
         <Controls/> 
         <MiniMap style={{zIndex:"100"}}/>
         <Background variant="dots" gap={12} size={1} />
         <SettingsPanel/>
-      </PlaygroundArea>
+      </Playground>
     </div>
   )
 }

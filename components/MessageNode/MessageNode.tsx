@@ -17,7 +17,7 @@ function MessageNode({ data, isConnectable }: TextUpdaterNodeProps) {
     <div className="text-updater-node">
       <Handle type="target" id="a" position={Position.Left} isConnectable={isConnectable} />
       <div>
-        <label htmlFor="text">Message:</label>
+        <label htmlFor="text">Send Message:</label>
         <input id="text" name="text" onChange={onChange} className="nodrag" />
       </div>
       <Handle
