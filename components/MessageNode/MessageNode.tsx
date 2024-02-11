@@ -1,3 +1,4 @@
+'use client'
 import React, { useCallback } from 'react';
 import { Handle, Position } from 'reactflow';
 
