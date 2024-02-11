@@ -6,11 +6,9 @@ interface TextUpdaterNodeProps {
   isConnectable: boolean;
 }
 
-const handleStyle = { left: 10 };
 
 function MessageNode({ data, isConnectable }: TextUpdaterNodeProps) {
   const onChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(evt.target.value);
   }, []);
 
   return (

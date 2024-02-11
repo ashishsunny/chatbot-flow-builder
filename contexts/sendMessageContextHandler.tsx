@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useCallback, ReactNode } from 'react'
+'use client'
+import React, { createContext, useContext, useCallback, useEffect, useState, ReactNode } from 'react'
 import ReactFlow, {
   useNodesState,
   useEdgesState,
@@ -16,17 +17,17 @@ interface NodeData {
 type PlaygroundContextProviderProps = { children: React.ReactNode }
 
 interface PlaygroundContextType {
-    nodes: Node<NodeData>[];
-    edges: Edge[];
-    onNodesChange: any;
-    onEdgesChange: any;
-    handleClick: any;
-    onConnect: (params: Parameters<typeof addEdge>[0]) => void;
-    nodeTypes: any;
+  nodes: Node<NodeData>[]
+  edges: Edge[]
+  onNodesChange: any
+  onEdgesChange: any
+  handleClick: any
+  onConnect: (params: Parameters<typeof addEdge>[0]) => void
+  nodeTypes: any
+  handleSave: any
 }
 
 const PlaygroundContext = createContext<PlaygroundContextType | null>(null)
-
 
 const initialNodes: Node<NodeData>[] = [
   {
@@ -76,11 +77,30 @@ const PlaygroundContextProvider = ({
       },
     ])
   }
+
   const onConnect = useCallback(
     (params: Parameters<typeof addEdge>[0]) =>
       setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   )
+  const [nodeL, setNodeL] = useState(3)
+  const [edgeL, setEdgeL] = useState(2)
+
+  const handleSave = () => {
+    console.log(edgeL)
+    console.log(nodeL)
+    if (edgeL === nodeL - 1) {
+      return true
+    } else false
+  }
+  
+  useEffect(() => {
+    setNodeL(nodes.length)
+    setEdgeL(edges.length)
+  }, [nodes, edges])
+  
+
+console.log(handleSave())
   return (
     <PlaygroundContext.Provider
       value={{
@@ -91,6 +111,7 @@ const PlaygroundContextProvider = ({
         handleClick,
         onConnect,
         nodeTypes,
+        handleSave,
       }}
     >
       {children}
@@ -99,13 +120,13 @@ const PlaygroundContextProvider = ({
 }
 
 export function usePlaygroundContext() {
-    const context = useContext(PlaygroundContext);
-    if (context === null) {
-      throw new Error(
-        'usePlaygroundContext must be used within PlaygroundContextProvider'
-      );
-    }
-    return context;
+  const context = useContext(PlaygroundContext)
+  if (context === null) {
+    throw new Error(
+      'usePlaygroundContext must be used within PlaygroundContextProvider'
+    )
   }
+  return context
+}
 
-export default PlaygroundContextProvider;
+export default PlaygroundContextProvider
