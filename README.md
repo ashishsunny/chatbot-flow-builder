@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+README.md
 
-## Getting Started
+Live Link: https://chatbot-flow-builder-nine.vercel.app/
 
-First, run the development server:
+💬 BiteSpeed Frontend Chatbot Flow Builder Assignment
+Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Let's get those chatbot conversations flowing! In this React-powered(Ahem,, Next.js) project, I have developed a user-friendly chatbot flow builder with extensibility and simplicity of code and architecture in mind. ✨
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 I have leveraged the awesome reactflow.dev: https://reactflow.dev/ library for the visual flow building experience & have used Shadcn/UI: https://ui.shadcn.com/ for the UI(minimial and aeshetically beautiful)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+💬 Text Nodes: The foundation of your chatbot conversations. Add as many as you need!
+🔌 Nodes Panel: Your toolbox for building awesome flows. Right now, we've got text nodes, but the possibilities are endless.
+🔗 Edges: Connect those nodes together for a seamless flow.
+☝️ Source Handles: Where your conversational journeys begin (only one edge per source, please!).
+🎯 Target Handles: The destination for your edges (they can handle multiple connections).
+⚙️ Settings Panel: Customize your selected node – for now, it's all about editing that text content.
+💾 Save Button: Lock in your brilliant flow design. Just watch out for those empty target handles - the save button won't be happy about them! 😉
+Getting Started
 
-## Learn More
+Make sure you have Node.js installed. Then:
 
-To learn more about Next.js, take a look at the following resources:
+Clone the repository
+npm/pnpm install or yarn install
+npm/pnpm run dev or yarn dev
+Let the flow-building fun begin!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Packages 📦
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+I have used these libraries to make the magic happen:
 
-## Deploy on Vercel
+Next.js 14
+Tailwind
+reactflow (of course!)
+shadcn (my go-to tailwind ui there days)
+Check out the package.json for the full list.
+Images:
+Playground(Flow Area)
+![Playground](https://github.com/ashishsunny/chatbot-flow-builder/tree/main/public/readme-img/img1.png)
+Error Message(Add required edges)
+![Chatbot Flow Builder Example](https://github.com/ashishsunny/chatbot-flow-builder/tree/main/public/readme-img/img2.png)
+Successful Flow Save Instance.
+![Chatbot Flow Builder Example](https://github.com/ashishsunny/chatbot-flow-builder/tree/main/public/readme-img/img3.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Happy coding! 🤖
