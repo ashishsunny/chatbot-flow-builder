@@ -1,6 +1,13 @@
 'use client'
-import React, { createContext, useContext, useCallback, useEffect, useState, ReactNode } from 'react'
-import ReactFlow, {
+import React, {
+  createContext,
+  useContext,
+  useCallback,
+  useEffect,
+  useState,
+  ReactNode,
+} from 'react'
+import {
   useNodesState,
   useEdgesState,
   addEdge,
@@ -24,7 +31,7 @@ interface PlaygroundContextType {
   handleClick: any
   onConnect: (params: Parameters<typeof addEdge>[0]) => void
   nodeTypes: any
-  handleSave: any
+  isConnected: any
 }
 
 const PlaygroundContext = createContext<PlaygroundContextType | null>(null)
@@ -36,26 +43,11 @@ const initialNodes: Node<NodeData>[] = [
     position: { x: 200, y: 200 },
     data: { label: '1' },
   },
-  {
-    id: '2',
-    type: 'textUpdater',
-    position: { x: 200, y: 250 },
-    data: { label: '2' },
-  },
-  {
-    id: '3',
-    type: 'textUpdater',
-    position: { x: 200, y: 300 },
-    data: { label: '3' },
-  },
 ]
 
 const nodeTypes = { textUpdater: MessageNode }
 
-const initialEdges: Edge[] = [
-  { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e2-3', source: '2', target: '3' },
-]
+const initialEdges: Edge[] = []
 
 const PlaygroundContextProvider = ({
   children,
@@ -85,22 +77,22 @@ const PlaygroundContextProvider = ({
   )
   const [nodeL, setNodeL] = useState(3)
   const [edgeL, setEdgeL] = useState(2)
+  const [isConnected, setIsConnected] = useState(true)
 
-  const handleSave = () => {
-    console.log(edgeL)
-    console.log(nodeL)
-    if (edgeL === nodeL - 1) {
-      return true
-    } else false
-  }
-  
+
   useEffect(() => {
     setNodeL(nodes.length)
     setEdgeL(edges.length)
-  }, [nodes, edges])
-  
+    if (edgeL === nodeL - 1) {
+      setIsConnected(true)
+    } else setIsConnected(false)
+  }, [nodes, edges, edgeL, nodeL])
 
-console.log(handleSave())
+
+  console.log(edgeL)
+  console.log(nodeL)
+  console.log(isConnected)
+
   return (
     <PlaygroundContext.Provider
       value={{
@@ -111,7 +103,7 @@ console.log(handleSave())
         handleClick,
         onConnect,
         nodeTypes,
-        handleSave,
+        isConnected,
       }}
     >
       {children}

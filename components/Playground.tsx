@@ -11,7 +11,6 @@ const Playground: React.FC<PlaygroundProps> = ({ children }) => {
     edges,
     onNodesChange,
     onEdgesChange,
-    handleClick,
     onConnect,
     nodeTypes, } = usePlaygroundContext();
 
