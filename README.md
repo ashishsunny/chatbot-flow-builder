@@ -1,6 +1,6 @@
 Live Link: https://chatbot-flow-builder-nine.vercel.app/
 
-**💬 BiteSpeed Frontend Chatbot Flow Builder Assignment**
+**💬Frontend Chatbot Flow Builder**
 
 **Overview**
 

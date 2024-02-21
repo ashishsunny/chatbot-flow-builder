@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   return (
     <nav className="fixed top-0 left-0 z-20 w-full bg-white border-b border-gray-200 py-3">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <h3>BiteSpeedFlow</h3>
+        <h3>ChatBotFlow</h3>
 
         <ul className="flex space-x-6">
           <Toaster />
