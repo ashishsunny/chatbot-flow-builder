@@ -4,7 +4,7 @@ Live Link: https://chatbot-flow-builder-nine.vercel.app/
 
 **Overview**
 
-Let's get those chatbot conversations flowing! In this React-powered (more specifically, Next.js) project, I've developed a user-friendly chatbot flow builder with extensibility, simplicity of code, and architecture in mind. ✨
+Let's get those message nodes flowing! In this React-powered (more specifically, Next.js) project, I've developed a user-friendly chatbot flow builder with extensibility, simplicity of code, and architecture in mind. ✨
 
 👉 I've leveraged the awesome reactflow.dev ([https://reactflow.dev/](https://reactflow.dev/)) library for the visual flow-building experience and Shadcn/UI ([https://ui.shadcn.com/](https://ui.shadcn.com/)) for a minimal and aesthetically pleasing UI.
 
